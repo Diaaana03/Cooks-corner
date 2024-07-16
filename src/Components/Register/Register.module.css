@@ -42,7 +42,7 @@ p {
 input {
   border: none;
   border-radius: 42px;
-  background-color: var(--input);
+  background-color: var(--lightGrey);
   font-size: 1.6rem;
   padding: 16px;
   width: 100%;

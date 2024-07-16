@@ -24,9 +24,11 @@ export const Login = () => {
             <input type="text" placeholder="Password" />
             <img src={eyeClosed} alt="eye closed" />
           </div>
-          <button type="submit" className={classes.submit__btn}>
-            Sign in
-          </button>
+          <Link to="/main">
+            <button type="submit" className={classes.submit__btn}>
+              Sign in
+            </button>
+          </Link>
           <Link to="/register">
             <h3 className={classes.right__h3}>
               I don't have an account? <span>Sign up now</span>
