@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { loginSchema } from "../Validations/Validations";
 import classes from "./Login.module.css";
 import at from "../../Assets/Images/at.svg";
-import eyeClosed from "../../Assets/Images/eyeClosed.svg";
+import eyeOpen from "../../Assets/Images/eyeOpen.svg";
+import eyeClosed from "../../Assets/Images/eyeCLosed.svg";
 
 export const Login = () => {
   const postLogin = "https://cooks-corner-prod.up.railway.app/api/login";
@@ -26,12 +27,12 @@ export const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      login: "",
+      email: "",
       password: "",
     },
     validationSchema: loginSchema,
     onSubmit: (values, actions) => {
-      handleLogin({ username: values.login, password: values.password });
+      handleLogin({ email: values.email, password: values.password });
       actions.setSubmitting(false);
     },
   });
@@ -50,10 +51,10 @@ export const Login = () => {
             <input
               type="text"
               placeholder="Email"
-              id="login"
+              id="email"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.login}
+              value={formik.values.email}
             />
             <img src={at} alt="at" />
           </div>
@@ -68,8 +69,8 @@ export const Login = () => {
               value={formik.values.password}
             />
             <img
-              src={eyeClosed}
-              alt="eyeClosed"
+              src={showPassword ? eyeOpen : eyeClosed}
+              alt={showPassword ? "eyeOpen" : "eyeClosed"}
               onClick={handlePasswordShow}
               style={{ cursor: "pointer" }}
             />

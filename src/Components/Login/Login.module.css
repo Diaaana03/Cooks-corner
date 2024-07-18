@@ -72,6 +72,7 @@ input {
 .submit__btn:hover {
   text-decoration: underline;
   opacity: 0.8;
+  border: none;
 }
 
 .right__h3 {

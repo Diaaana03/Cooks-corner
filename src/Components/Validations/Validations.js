@@ -4,16 +4,9 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{5,24}$/;
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 
 export const registerSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Email is incorrect")
-    .required("Email address required"),
+  email: yup.string().email("Email is incorrect").required("Email required"),
 
-  login: yup
-    .string()
-    .min(4, "At least 4 characters required")
-    .matches(/^[A-Za-z]*$/, "Only Latin letters")
-    .required("Login required"),
+  name: yup.string().required("Name required"),
 
   password: yup
     .string()
@@ -32,11 +25,7 @@ export const registerSchema = yup.object().shape({
 });
 
 export const loginSchema = yup.object().shape({
-  login: yup
-    .string()
-    .min(4, "Min 4 characters")
-    .matches(/^[A-Za-z]*$/, "Only Latin letters")
-    .required("Login required"),
+  email: yup.string().email("Email is incorrect").required("Email required"),
 
   password: yup
     .string()

@@ -72,6 +72,7 @@ input {
 .submit__btn:hover {
   text-decoration: underline;
   opacity: 0.8;
+  border: none;
 }
 
 .right__h3 {
@@ -86,4 +87,30 @@ input {
 
 span {
   color: var(--primary);
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 8px;
+  margin-top: -10px;
+}
+
+.validation__ul {
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.validation__li {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.validation__li_valid {
+  color: green;
+}
+
+.validation__li_invalid {
+  color: red;
 }
