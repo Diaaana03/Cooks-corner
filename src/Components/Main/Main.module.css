@@ -1,0 +1,36 @@
+.main {
+  flex-grow: 1;
+  padding: 3.2rem;
+}
+
+h3 {
+  font-size: 24px;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.category__section {
+  margin: 64px 0;
+}
+
+.category__section h3 {
+  font-weight: 500;
+}
+
+.category__list {
+  margin-top: 24px;
+  margin-bottom: 22px;
+  display: flex;
+  gap: 64px;
+}
+
+button {
+  font-size: 16px;
+  color: var(--text-faded);
+  cursor: pointer;
+}
+
+button:hover {
+  border-bottom: 2px solid;
+  color: var(--text);
+}

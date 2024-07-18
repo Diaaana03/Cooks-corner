@@ -4,8 +4,8 @@ import classes from "./Search.module.css";
 
 export const Search = () => {
   return (
-    <div>
-      <p>Search page</p>
+    <div className={classes.search}>
+      <h1>Search page</h1>
     </div>
   );
 };

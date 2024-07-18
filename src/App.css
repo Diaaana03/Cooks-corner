@@ -4,6 +4,7 @@
   --primary: #fa9e31;
   --lightGrey: #ededed;
   --text: #343434;
+  --text-faded: #666666;
 }
 
 * {
@@ -17,7 +18,17 @@ html {
   font-size: 10px;
 }
 
+.main-layout {
+  display: flex;
+  height: 100vh;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }
