@@ -88,3 +88,9 @@ input {
 span {
   color: var(--primary);
 }
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 8px;
+}

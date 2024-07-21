@@ -8,6 +8,7 @@ import user from "../../Assets/Images/user.svg";
 import at from "../../Assets/Images/at.svg";
 import eyeClosed from "../../Assets/Images/eyeCLosed.svg";
 import eyeOpen from "../../Assets/Images/eyeOpen.svg";
+import { useUser } from "../UserContext/UserContext";
 
 const validatePassword = (password) => {
   const passwordValidations = {
@@ -23,6 +24,7 @@ const validatePassword = (password) => {
 export const Register = () => {
   const postRegister = "https://cooks-corner-prod.up.railway.app/api/register";
   const navigate = useNavigate();
+  const { setUser } = useUser();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -41,6 +43,8 @@ export const Register = () => {
       const response = await axios.post(postRegister, payload);
       console.log("Response data:", response.data);
       setSubmitting(false);
+      setUser({ name: values.name });
+      console.log("User set in context:", { name: values.name });
       navigate("/main");
     } catch (error) {
       if (error.response) {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import axios from "axios";
 import { loginSchema } from "../Validations/Validations";
 import classes from "./Login.module.css";
@@ -57,6 +57,9 @@ export const Login = () => {
               value={formik.values.email}
             />
             <img src={at} alt="at" />
+            {formik.touched.email && formik.errors.email ? (
+              <div className={classes.error}>{formik.errors.email}</div>
+            ) : null}
           </div>
           <div className={classes.input__wrapper}>
             <p>Password</p>
@@ -74,6 +77,9 @@ export const Login = () => {
               onClick={handlePasswordShow}
               style={{ cursor: "pointer" }}
             />
+            {formik.touched.password && formik.errors.password ? (
+              <div className={classes.error}>{formik.errors.password}</div>
+            ) : null}
           </div>
           <button type="submit" className={classes.submit__btn}>
             Sign in

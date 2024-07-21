@@ -26,9 +26,11 @@ export const Sidebar = () => {
           <img className={classes.link} src={user_icon} alt="user icon" />
         </Link>
       </div>
-      <Link to="/Search">
-        <img className={classes.exit__link} src={exit_icon} alt="exit icon" />
-      </Link>
+      <div className={classes.exit__link_box}>
+        <Link to="/Search">
+          <img className={classes.exit__link} src={exit_icon} alt="exit icon" />
+        </Link>
+      </div>
     </div>
   );
 };
