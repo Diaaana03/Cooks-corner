@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import classes from "./Category.module.css";
 import heart from "../../Assets/Images/heart.svg";
 import save from "../../Assets/Images/save.svg";
@@ -6,22 +7,21 @@ import save from "../../Assets/Images/save.svg";
 export default function Category({ data }) {
   return (
     <div className={classes.category}>
-      cds
-      {/* {data.length > 0 ? (
+      {data && data.length > 0 ? (
         data.map((item) => (
           <div key={item.id} className={classes.category__container}>
             <div className={classes.meal}>
               <h2>{item.title}</h2>
-              <p>by {item.author}</p>
+              <p>by {item.userName}</p>
               <div className={classes.meal__saved}>
-                <img src={heart} alt="heart-icon" />
-                <h4>{item.likes}</h4>
-                <img src={save} alt="save-icon" />
-                <h4>{item.saves}</h4>
+                <img src={heart} alt="heart-icon" className={classes.icon} />
+                <h4>{item.likesCount}</h4>
+                <img src={save} alt="save-icon" className={classes.icon} />
+                <h4>{item.savesCount}</h4>
               </div>
             </div>
             <img
-              src={item.image}
+              src={item.imageUrl}
               className={classes.meal__img}
               alt="meal-img"
             />
@@ -29,7 +29,11 @@ export default function Category({ data }) {
         ))
       ) : (
         <p>No recipes found for this category.</p>
-      )} */}
+      )}
     </div>
   );
 }
+
+Category.propTypes = {
+  data: PropTypes.array.isRequired,
+};

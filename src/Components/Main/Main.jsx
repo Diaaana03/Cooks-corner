@@ -19,27 +19,21 @@ export const Main = () => {
   const [error, setError] = useState(null);
 
   const fetchCategoryData = async (category) => {
+    const token = localStorage.getItem("token"); // Retrieve the token from local storage
     try {
       const response = await axios.get(API_URLS[category], {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include the token in the request headers
         },
       });
+      console.log(response.data);
       setCategoryData(response.data);
     } catch (error) {
       console.error("Error fetching category data:", error);
       setError(error.response ? error.response.data.message : error.message);
     }
   };
-
-  // const fetchCategoryData = async (category) => {
-  //   try {
-  //     const response = await axios.get(API_URLS[category]);
-  //     setCategoryData(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching category data:", error);
-  //   }
-  // };
 
   useEffect(() => {
     fetchCategoryData(selectedCategory);
@@ -52,15 +46,29 @@ export const Main = () => {
   return (
     <div className={classes.main}>
       <Link to="/recipe">recipe</Link>
-      <h3>Hi, Friend. UI Designer & Cook</h3>
+      <h3>Hi, {user?.name}. UI Designer & Cook</h3>
       <div className={classes.category__section}>
         <h3>Category</h3>
         <div className={classes.category__list}>
-          <button autoFocus onClick={() => handleCategoryChange("Breakfast")}>
+          <button
+            className={selectedCategory === "Breakfast" ? classes.active : ""}
+            autoFocus
+            onClick={() => handleCategoryChange("Breakfast")}
+          >
             Breakfast
           </button>
-          <button onClick={() => handleCategoryChange("Lunch")}>Lunch</button>
-          <button onClick={() => handleCategoryChange("Dinner")}>Dinner</button>
+          <button
+            className={selectedCategory === "Lunch" ? classes.active : ""}
+            onClick={() => handleCategoryChange("Lunch")}
+          >
+            Lunch
+          </button>
+          <button
+            className={selectedCategory === "Dinner" ? classes.active : ""}
+            onClick={() => handleCategoryChange("Dinner")}
+          >
+            Dinner
+          </button>
         </div>
         {error ? <p>Error: {error}</p> : <Category data={categoryData} />}
       </div>

@@ -54,6 +54,7 @@
   background-color: #fff;
   border-radius: 10px;
   padding: 1.5rem;
+  cursor: pointer;
 }
 
 .exit__link:hover {

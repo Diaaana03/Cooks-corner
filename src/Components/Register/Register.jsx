@@ -44,7 +44,7 @@ export const Register = () => {
       console.log("Response data:", response.data);
       setSubmitting(false);
       setUser({ name: values.name });
-      console.log("User set in context:", { name: values.name });
+      localStorage.setItem("token", response.data.token); // store jwt
       navigate("/main");
     } catch (error) {
       if (error.response) {

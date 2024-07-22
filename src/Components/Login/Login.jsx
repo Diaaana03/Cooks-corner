@@ -17,7 +17,9 @@ export const Login = () => {
   const handleLogin = async (data) => {
     try {
       const response = await axios.post(postLogin, data);
+      console.log(response.data);
       if (response.status === 200) {
+        localStorage.setItem("token", response.data.token); // store jwt
         navigate("/main");
       }
     } catch (err) {
