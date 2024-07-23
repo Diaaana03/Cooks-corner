@@ -10,14 +10,14 @@ export const ModalAdd = ({ isOpen, onClose, onConfirm }) => {
   };
 
   return (
-    <div className={classes.modal}>
-      <div className={classes.modal__content}>
+    <div className={classes.modal__add}>
+      <div className={classes.modal__content__add}>
         <h2>Create a new recipe</h2>
-        <div className={classes.modal__btns}>
-          <button onClick={handleConfirm} className={classes.confirm_btn}>
+        <div className={classes.modal__btns__add}>
+          <button onClick={handleConfirm} className={classes.confirm_btn_add}>
             Yes
           </button>
-          <button onClick={onClose} className={classes.cancel_btn}>
+          <button onClick={onClose} className={classes.cancel_btn_add}>
             No
           </button>
         </div>

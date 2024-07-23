@@ -1,67 +1,53 @@
-.search {
-  margin-left: 9.6rem;
-  text-align: center;
-  width: calc(100% - 9.6rem); /* Adjust width to fit within the layout */
-  background-color: #fafafa;
-  padding-bottom: 5rem; /* Add padding to the bottom to accommodate the absolute position of the button */
-}
-
-.search__h1 {
-  font-size: 24px;
-  font-weight: 500;
-  text-align: center;
-  color: var(--text);
-  margin: 32px auto;
-}
-
-.form__search {
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
-}
-
-.search__input {
-  border-radius: 28px;
-  padding: 16px 24px;
-  font-size: 16px;
-  font-weight: 400;
-  outline: none;
-  width: 100%; /* Ensure the input takes the full width of the form */
-}
-
-.search__icon {
-  position: absolute;
-  right: 2rem;
-  top: 2.2rem;
-}
-
-.add__btn {
-  background-color: var(--primary);
+.modal__add {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 16px;
-  width: 50rem;
-  border-radius: 28px;
+}
+
+.modal__content__add {
+  background: #fff;
+  padding: 40px 20px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 331px;
+}
+
+.modal__btns__add {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm_btn_add {
+  margin-right: 10px;
+  background-color: #fff6de;
+  color: #292929;
+  border: none;
+  padding: 16px 55px;
   cursor: pointer;
-  border: none;
-  color: #fafafa;
-  margin: 20px auto;
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: 18px;
+  border-radius: 10px;
 }
 
-.add__btn img {
-  margin-right: 8px;
+.cancel_btn_add {
+  background-color: #fff6de;
+  color: #292929;
+  border: none;
+  padding: 16px 55px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 10px;
 }
 
-.add__btn:hover {
-  color: #fafafa;
-  border: none;
-  text-decoration: underline;
-  opacity: 0.9;
+.cancel_btn_add:hover,
+.confirm_btn_add:hover {
+  background-color: var(--primary);
+  color: #fff;
 }

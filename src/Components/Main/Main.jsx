@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import classes from "./Main.module.css";
 import { useUser } from "../UserContext/UserContext";
 import Category from "../Category/Category";
@@ -19,12 +18,12 @@ export const Main = () => {
   const [error, setError] = useState(null);
 
   const fetchCategoryData = async (category) => {
-    const token = localStorage.getItem("token"); // Retrieve the token from local storage
+    const token = localStorage.getItem("token");
     try {
       const response = await axios.get(API_URLS[category], {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include the token in the request headers
+          Authorization: `Bearer ${token}`,
         },
       });
       console.log(response.data);
@@ -45,7 +44,6 @@ export const Main = () => {
 
   return (
     <div className={classes.main}>
-      <Link to="/recipe">recipe</Link>
       <h3>Hi, {user?.name}. UI Designer & Cook</h3>
       <div className={classes.category__section}>
         <h3>Category</h3>

@@ -7,19 +7,22 @@ import classes from "./Login.module.css";
 import at from "../../Assets/Images/at.svg";
 import eyeOpen from "../../Assets/Images/eyeOpen.svg";
 import eyeClosed from "../../Assets/Images/eyeCLosed.svg";
+import { useUser } from "../UserContext/UserContext";
 
 export const Login = () => {
   const postLogin = "https://cooks-corner-prod.up.railway.app/api/login";
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const handlePasswordShow = () => setShowPassword(!showPassword);
+  const { setUser } = useUser();
 
   const handleLogin = async (data) => {
     try {
       const response = await axios.post(postLogin, data);
       console.log(response.data);
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.token); // store jwt
+        const user = { name: response.data.name, email: response.data.email };
+        setUser(user, response.data.token);
         navigate("/main");
       }
     } catch (err) {

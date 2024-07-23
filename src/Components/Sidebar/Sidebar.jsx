@@ -47,18 +47,18 @@ export const Sidebar = () => {
   return (
     <div className={classes.sidebar}>
       <div className={classes.logo}>
-        <Link to="/Search">
+        <Link to="/Main">
           <img className={classes.logo__link} src={logo_icon} alt="logo icon" />
         </Link>
       </div>
       <div className={classes.links}>
-        <Link to="/Search">
+        <Link to="/Main">
           <img className={classes.link} src={home_icon} alt="home icon" />
         </Link>
         <Link to="/Search">
           <img className={classes.link} src={search_icon} alt="search icon" />
         </Link>
-        <Link to="/Search">
+        <Link to="#">
           <img className={classes.link} src={user_icon} alt="user icon" />
         </Link>
       </div>

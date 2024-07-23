@@ -17,8 +17,14 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
+  const setUserAndToken = (user, token) => {
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser: setUserAndToken }}>
       {children}
     </UserContext.Provider>
   );

@@ -23,11 +23,13 @@
 
 .category__container .meal {
   padding: 16px;
+  cursor: pointer;
 }
 
 .category__container .meal h2 {
   font-size: 20px;
   font-weight: 500;
+  color: #ffffff;
 }
 
 .category__container .meal p {

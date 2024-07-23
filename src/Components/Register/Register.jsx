@@ -43,8 +43,8 @@ export const Register = () => {
       const response = await axios.post(postRegister, payload);
       console.log("Response data:", response.data);
       setSubmitting(false);
-      setUser({ name: values.name });
-      localStorage.setItem("token", response.data.token); // store jwt
+      const user = { name: values.name, email: values.email };
+      setUser(user, response.data.token);
       navigate("/main");
     } catch (error) {
       if (error.response) {

@@ -24,7 +24,7 @@ function App() {
                 <Routes>
                   <Route path="/main" element={<Main />} />
                   <Route path="/search" element={<Search />} />
-                  <Route path="/recipe" element={<Recipe />} />
+                  <Route path="/recipe/:id" element={<Recipe />} />
                 </Routes>
               </div>
             }
