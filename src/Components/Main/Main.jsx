@@ -26,7 +26,6 @@ export const Main = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       setCategoryData(response.data);
     } catch (error) {
       console.error("Error fetching category data:", error);
@@ -50,7 +49,6 @@ export const Main = () => {
         <div className={classes.category__list}>
           <button
             className={selectedCategory === "Breakfast" ? classes.active : ""}
-            autoFocus
             onClick={() => handleCategoryChange("Breakfast")}
           >
             Breakfast

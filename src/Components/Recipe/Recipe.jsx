@@ -3,33 +3,51 @@ import { useParams } from "react-router-dom";
 import recipeBackground from "../../Assets/Images/recipeBackground.jpg";
 import clock from "../../Assets/Images/clock.svg";
 import classes from "./Recipe.module.css";
+import { useUser } from "../UserContext/UserContext";
 
 export const Recipe = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [error, setError] = useState(null);
+  const { token } = useUser();
 
   useEffect(() => {
     const fetchRecipe = async () => {
+      if (!id) {
+        console.error("Recipe ID is missing");
+      }
+      if (!token) {
+        console.error("JWT token is missing");
+      }
+
       try {
+        console.log(`Fetching recipe with ID: ${id}`);
         const response = await fetch(
-          `https://cooks-corner-prod.up.railway.app/api/recipe/${id}`
+          `https://cooks-corner-prod.up.railway.app/api/recipe/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
         );
-        console.log("Response:", response); // Log the response object
+        console.log("Response:", response);
+
         if (!response.ok) {
           throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
+
         const data = await response.json();
-        console.log("Data:", data); // Log the response data
+        console.log("Data:", data);
         setRecipe(data);
       } catch (err) {
-        console.error("Error fetching recipe:", err); // Log the error
+        console.error("Error fetching recipe:", err);
         setError(err.message);
       }
     };
 
     fetchRecipe();
-  }, [id]);
+  }, [id, token]);
 
   if (error) {
     return <p>{error}</p>;

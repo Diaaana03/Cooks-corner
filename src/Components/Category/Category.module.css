@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 32px;
+  gap: 2rem;
 }
 
 .category__container {
