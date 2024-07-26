@@ -12,17 +12,6 @@ export const Recipe = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!id) {
-      console.error("Recipe ID is missing");
-      setError("Recipe ID is missing");
-      return;
-    }
-    if (!token) {
-      console.error("JWT token is missing");
-      setError("JWT token is missing");
-      return;
-    }
-
     const fetchRecipe = async () => {
       try {
         console.log(`Fetching recipe with ID: ${id}, Token: ${token}`);

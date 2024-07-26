@@ -1,4 +1,4 @@
-.modal {
+.modal__exit {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,6 +8,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2000; /* Ensure it's on top of other elements */
+}
+
+.h2__exit {
+  font-weight: 500;
+  font-size: 24px;
 }
 
 .modal__content {
@@ -16,7 +22,7 @@
   border-radius: 30px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 331px;
+  width: 332px;
 }
 
 .modal__btns {
@@ -25,13 +31,8 @@
   justify-content: space-between;
 }
 
-h2 {
-  font-weight: 500;
-  font-size: 24px;
-  color: var(--text);
-}
-
-.confirm_btn {
+.confirm_btn,
+.cancel_btn {
   margin-right: 10px;
   background-color: #fff6de;
   color: #292929;
@@ -40,20 +41,17 @@ h2 {
   cursor: pointer;
   font-size: 18px;
   border-radius: 10px;
+  z-index: 1000;
 }
 
-.cancel_btn {
-  background-color: #fff6de;
-  color: #292929;
-  border: none;
-  padding: 16px 55px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 10px;
-}
-
-.cancel_btn:hover,
-.confirm_btn:hover {
+.confirm_btn:hover,
+.cancel_btn:hover {
   background-color: var(--primary);
   color: #fff;
+}
+
+.main.modalOpen,
+.category__container.modalOpen {
+  pointer-events: none; /* Disable interactions behind modal */
+  opacity: 0.5; /* Optionally, dim the background content */
 }

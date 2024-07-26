@@ -7,12 +7,13 @@ import save from "../../Assets/Images/save.svg";
 
 export default function Category({ data }) {
   const navigate = useNavigate();
+
   const handleRecipeClick = (id) => {
     navigate(`/recipe/${id}`);
   };
 
   return (
-    <div className={classes.category}>
+    <div className={`${classes.category}`}>
       {data && data.length > 0 ? (
         data.map((item) => (
           <div key={item.id} className={classes.category__container}>

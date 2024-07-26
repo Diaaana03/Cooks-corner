@@ -3,6 +3,7 @@ import axios from "axios";
 import classes from "./Main.module.css";
 import { useUser } from "../UserContext/UserContext";
 import Category from "../Category/Category";
+import { ModalExit } from "../ModalExit/ModalExit";
 
 const API_URLS = {
   Breakfast:
@@ -12,17 +13,35 @@ const API_URLS = {
 };
 
 export const Main = () => {
-  const { user } = useUser();
+  const { token } = useUser();
   const [selectedCategory, setSelectedCategory] = useState("Breakfast");
   const [categoryData, setCategoryData] = useState([]);
+  const [userName, setUserName] = useState("Guest");
+  const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(
+          "https://cooks-corner-prod.up.railway.app/api/user/my-account",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setUserName(response.data.name);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, [token]);
+
   const fetchCategoryData = async (category) => {
-    const token = localStorage.getItem("token");
     try {
       const response = await axios.get(API_URLS[category], {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -37,37 +56,35 @@ export const Main = () => {
     fetchCategoryData(selectedCategory);
   }, [selectedCategory]);
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
+  const closeModal = () => setModalOpen(false);
+  const confirmModal = () => {
+    closeModal();
   };
 
   return (
-    <div className={classes.main}>
-      <h3>Hi, {user?.name}. UI Designer & Cook</h3>
+    <div className={`${classes.main} ${modalOpen ? classes.modalOpen : ""}`}>
+      <h3>Hi, {userName}. UI Designer & Cook</h3>
       <div className={classes.category__section}>
         <h3>Category</h3>
         <div className={classes.category__list}>
-          <button
-            className={selectedCategory === "Breakfast" ? classes.active : ""}
-            onClick={() => handleCategoryChange("Breakfast")}
-          >
-            Breakfast
-          </button>
-          <button
-            className={selectedCategory === "Lunch" ? classes.active : ""}
-            onClick={() => handleCategoryChange("Lunch")}
-          >
-            Lunch
-          </button>
-          <button
-            className={selectedCategory === "Dinner" ? classes.active : ""}
-            onClick={() => handleCategoryChange("Dinner")}
-          >
-            Dinner
-          </button>
+          {["Breakfast", "Lunch", "Dinner"].map((category) => (
+            <button
+              key={category}
+              className={selectedCategory === category ? classes.active : ""}
+              onClick={() => setSelectedCategory(category)}
+              disabled={modalOpen}
+            >
+              {category}
+            </button>
+          ))}
         </div>
         {error ? <p>Error: {error}</p> : <Category data={categoryData} />}
       </div>
+      <ModalExit
+        isOpen={modalOpen}
+        onClose={closeModal}
+        onConfirm={confirmModal}
+      />
     </div>
   );
 };

@@ -19,7 +19,6 @@ export const Login = () => {
   const handleLogin = async (data) => {
     try {
       const response = await axios.post(postLogin, data);
-      console.log(response.data);
       if (response.status === 200) {
         const user = { name: response.data.name, email: response.data.email };
         setUser(user, response.data.token);
