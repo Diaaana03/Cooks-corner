@@ -84,6 +84,7 @@
 
 .ingredients__box:last-child {
   border-bottom: none;
+  padding-bottom: 3rem;
 }
 
 .ingredients__box li {

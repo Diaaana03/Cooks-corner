@@ -8,12 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000; /* Ensure it's on top of other elements */
-}
-
-.h2__exit {
-  font-weight: 500;
-  font-size: 24px;
+  z-index: 2000;
 }
 
 .modal__content {
@@ -22,13 +17,19 @@
   border-radius: 30px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 332px;
+  width: 331px;
 }
 
 .modal__btns {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--text);
 }
 
 .confirm_btn,
@@ -41,17 +42,10 @@
   cursor: pointer;
   font-size: 18px;
   border-radius: 10px;
-  z-index: 1000;
 }
 
 .confirm_btn:hover,
 .cancel_btn:hover {
   background-color: var(--primary);
   color: #fff;
-}
-
-.main.modalOpen,
-.category__container.modalOpen {
-  pointer-events: none; /* Disable interactions behind modal */
-  opacity: 0.5; /* Optionally, dim the background content */
 }

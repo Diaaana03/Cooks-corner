@@ -58,7 +58,7 @@ export const Sidebar = () => {
         <Link to="/Search">
           <img className={classes.link} src={search_icon} alt="search icon" />
         </Link>
-        <Link to="#">
+        <Link to="/Profile">
           <img className={classes.link} src={user_icon} alt="user icon" />
         </Link>
       </div>

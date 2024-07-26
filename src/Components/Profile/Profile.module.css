@@ -1,0 +1,65 @@
+.profile {
+  padding: 32px 0 0 128px;
+  width: 100%;
+}
+
+.profile__info {
+  color: var(--text-faded);
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.profile__followers {
+  display: flex;
+  gap: 24px;
+  text-align: center;
+  justify-content: center;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: var(--text-faded);
+}
+
+.profile__bio_desc {
+  display: flex;
+  justify-content: center;
+}
+
+.profile__name {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 16px 0 5px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: var(--text-faded);
+}
+
+.button__manage {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff6de;
+  padding: 20px;
+  border-radius: 12px;
+  width: 480px;
+  border: none;
+}
+
+.button__manage:hover {
+  border: none;
+  background-color: var(--primary);
+}

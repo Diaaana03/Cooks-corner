@@ -1,9 +1,9 @@
 .search {
   margin-left: 9.6rem;
   text-align: center;
-  width: calc(100% - 9.6rem); /* Adjust width to fit within the layout */
+  width: calc(100% - 9.6rem);
   background-color: #fafafa;
-  padding-bottom: 5rem; /* Add padding to the bottom to accommodate the absolute position of the button */
+  padding-bottom: 5rem;
 }
 
 .search__h1 {
@@ -26,13 +26,14 @@
   font-size: 16px;
   font-weight: 400;
   outline: none;
-  width: 100%; /* Ensure the input takes the full width of the form */
+  width: 100%;
 }
 
 .search__icon {
   position: absolute;
   right: 2rem;
-  top: 2.2rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .add__btn {
@@ -64,4 +65,46 @@
   border: none;
   text-decoration: underline;
   opacity: 0.9;
+}
+
+.results__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(308px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.recipe__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.recipe__card:hover {
+  background-color: var(--primary);
+}
+
+.recipe__card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.recipe__details {
+  padding: 10px;
+}
+
+.recipe__details h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.recipe__details p {
+  font-size: 14px;
+  color: var(--text-faded);
 }
